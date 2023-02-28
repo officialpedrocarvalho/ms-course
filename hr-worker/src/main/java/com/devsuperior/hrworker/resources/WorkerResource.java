@@ -28,9 +28,6 @@ public class WorkerResource {
 	private String testConfig;
 
 	@Autowired
-	private Environment env;
-
-	@Autowired
 	private WorkerRepository respository;
 
 	@GetMapping(value = "/configs")
@@ -47,7 +44,6 @@ public class WorkerResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Long id) {
-		logger.info("PORT = " + env.getProperty("local.server.port"));
 		Worker worker = respository.findById(id).get();
 		return ResponseEntity.ok(worker);
 	}
