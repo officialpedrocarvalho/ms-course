@@ -22,19 +22,8 @@ import com.devsuperior.hrworker.repositories.WorkerRepository;
 @RequestMapping(value = "/workers")
 public class WorkerResource {
 
-	private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
-
-	@Value("${test.config}")
-	private String testConfig;
-
 	@Autowired
 	private WorkerRepository respository;
-
-	@GetMapping(value = "/configs")
-	public ResponseEntity<Void> getConfigs() {
-		logger.info("CONFIG = " + testConfig);
-		return ResponseEntity.noContent().build();
-	}
 
 	@GetMapping
 	public ResponseEntity<List<Worker>> findAll() {
